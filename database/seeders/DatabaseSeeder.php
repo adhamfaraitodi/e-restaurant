@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         Admin::create([
             'name' => 'Admin',
+            'email' => 'admin@mail.com',
             'phone_number' => '085821',
             'address' => 'Sleman',
             'job' => 'owner',
