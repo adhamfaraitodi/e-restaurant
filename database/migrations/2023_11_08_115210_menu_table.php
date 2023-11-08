@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_admin');
+            $table->foreign('id_admin')->references('id')->on('admin');
             $table->string('name');
             $table->string('desc');
             $table->integer('number_available');
