@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_menu');
             $table->foreign('id_menu')->references('id')->on('menus');
             $table->unsignedBigInteger('id_order');
-            $table->foreign('id_order')->references('id')->on('orders');
+            $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('discount', 8, 2);
             $table->decimal('subtotal', 8, 2);
