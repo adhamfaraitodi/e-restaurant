@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('admin', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
+            $table->string('email',50);
             $table->string('phone_number',20);
             $table->string('address', 80);
             $table->enum('job', ['owner', 'karyawan']);
