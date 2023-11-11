@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_admin')->references('id')->on('admin');
             $table->string('name');
             $table->string('desc');
+            $table->binary('img');
             $table->integer('number_available');
             $table->integer('number_sale');
             $table->integer('favorite');
