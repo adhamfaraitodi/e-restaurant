@@ -1,7 +1,10 @@
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'fastclick/lib/fastclick.js';
-import 'bootstrap-progressbar/bootstrap-progressbar.min.js';
-import 'icheck/icheck.min.js';
 import './bootstrap';
-import './custom.min.js';
+import '../assets/bootstrap/dist/css/bootstrap.min.css';
+import '../assets/font-awesome/css/font-awesome.min.css';
+import '../assets/nprogress/nprogress.css';
+import '../assets/iCheck/skins/flat/green.css';
+import '../assets/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css';
+import '../assets/jqvmap/dist/jqvmap.min.css';
+import '../assets/bootstrap-daterangepicker/daterangepicker.css';
+import '../assets/custom.min.css';
+
