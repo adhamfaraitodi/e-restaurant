@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 30);
             $table->string('email',50);
+            $table->binary('img');
             $table->string('phone_number',20);
             $table->string('address', 80);
             $table->enum('job', ['owner', 'karyawan']);
