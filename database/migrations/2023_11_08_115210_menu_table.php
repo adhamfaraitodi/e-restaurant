@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_admin');
+            $table->smallIncrements('id');
+            $table->unsignedSmallInteger('id_admin');
             $table->foreign('id_admin')->references('id')->on('admin');
             $table->string('name');
             $table->string('desc');
-            $table->binary('img');
-            $table->integer('number_available');
-            $table->integer('number_sale');
-            $table->integer('favorite');
+            $table->string('image_path');
+            $table->smallInteger('number_available');
+            $table->smallInteger('number_sale');
+            $table->smallInteger('favorite');
             $table->enum('food_type', ['Makanan', 'Minuman','Snack']);
             $table->decimal('price_food', 8, 2);
             $table->decimal('discount', 8, 2);

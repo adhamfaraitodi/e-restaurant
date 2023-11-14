@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 30);
+            $table->smallIncrements('id');
+            $table->string('name', 50);
             $table->string('email',50);
-            $table->binary('img');
+            $table->string('image_path');
             $table->string('phone_number',20);
             $table->string('address', 80);
             $table->enum('job', ['owner', 'karyawan']);
