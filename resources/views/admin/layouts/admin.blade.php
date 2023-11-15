@@ -10,6 +10,7 @@
                     </div>
 
                     <div class="clearfix"></div>
+                    @include('admin.section.profil')
                     <br />
                     @include('admin.section.sidebar')
                 </div>
