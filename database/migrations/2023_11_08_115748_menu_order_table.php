@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menu_order', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_menu');
+            $table->smallIncrements('id');
+            $table->unsignedSmallInteger('id_menu');
             $table->foreign('id_menu')->references('id')->on('menus');
-            $table->unsignedBigInteger('id_order');
+            $table->unsignedSmallInteger('id_order');
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
-            $table->integer('quantity');
+            $table->smallInteger('quantity');
+            $table->decimal('price_food', 8, 2);
             $table->decimal('discount', 8, 2);
             $table->decimal('subtotal', 8, 2);
             $table->string('menu_note')->nullable();
