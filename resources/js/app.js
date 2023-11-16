@@ -7,4 +7,3 @@ import '../assets/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css'
 import '../assets/jqvmap/dist/jqvmap.min.css';
 import '../assets/bootstrap-daterangepicker/daterangepicker.css';
 import '../assets/custom.min.css';
-
