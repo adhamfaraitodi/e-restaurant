@@ -4,13 +4,13 @@
         <ul class="nav side-menu">
             <li><a><i class="fa fa-home"></i> Dashboard<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href=" ">Dashboard</a></li>
+                    <li><a href="dashboard">Dashboard</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-spoon"></i> Menu <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="tampil">Kelola Menu</a></li>
-                    <li><a href="form_advanced.html">Tambah Menu</a></li>
+                    <li><a href="tambahMenuForm">Tambah Menu</a></li>
 
                 </ul>
             </li>

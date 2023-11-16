@@ -25,32 +25,32 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                    <form id="tambahMenuForm" enctype="multipart/form-data" method="POST" action="{{ route('admin.tambahMenu') }}" data-parsley-validate class="form-horizontal form-label-left">
+                        @csrf
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nama Makanan <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="foodName">Nama Makanan <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="first-name" required="required" class="form-control ">
+                                <input type="text" id="foodName" required="required" class="form-control" name="foodName">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Deskripsi Makanan <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="foodDesc">Deskripsi Makanan <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                                <input type="text" id="foodDesc" name="foodDesc" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Foto Makanan</label>
+                            <label for="foodImg" class="col-form-label col-md-3 col-sm-3 label-align">Foto Makanan</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="middle-name" class="form-control" type="text" name="middle-name">
+                                <input id="foodImg" class="form-control" type="file" name="foodImg">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Stok</label>
+                            <label for="foodStock" class="col-form-label col-md-3 col-sm-3 label-align">Stok</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="middle-name" class="form-control" type="text" name="middle-name">
+                                <input id="foodStock" class="form-control" type="number" name="foodStock">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -70,17 +70,17 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Harga <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="foodPrice">Harga <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                                <input type="number" id="foodPrice" name="foodPrice" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Diskon <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="foodDisc">Diskon <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                                <input type="number" id="foodDisc" name="foodDisc" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="ln_solid"></div>
