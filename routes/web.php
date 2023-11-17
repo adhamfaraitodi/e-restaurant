@@ -15,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('customer.menu');
 });
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/admin/login', 'login')->name('login');
     Route::get('/admin/dashboard', 'dashboard')->name('dashboard');
-
     Route::post('/logout', 'logout')->name('logout');
 });
