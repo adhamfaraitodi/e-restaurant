@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -27,9 +28,16 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $user = Admin::create($request->validated());
+        $data = $request->validated();
+        $data['name'] = $data['username'];
+        $data['phone_number'] = '';
+        $data['image_path'] = '';
+        $data['address'] = '';
+        $data['job'] = 'karyawan';
+        $user = Admin::create($data);
 
-        auth()->login($user);
+        // auth('admins')->login($user);
+        Auth::guard()->login($user);
 
         return redirect('/admin')->with('success', "Account successfully registered.");
     }

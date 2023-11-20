@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Admin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Admin::create([
+            'name' => 'david',
+            'email' => 'test@mail.com',
+            'image_path' => '/img',
+            'phone_number' => '08123',
+            'address' => 'Sleman',
+            'job' => 'Owner',
+            'username' => 'david',
+            'password' => '12345678'
+        ]);
+
     }
 }

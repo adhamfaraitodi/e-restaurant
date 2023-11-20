@@ -7,10 +7,10 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Login\RememberMeExpiration;
 
+
 class LoginController extends Controller
 {
     use RememberMeExpiration;
-
     /**
      * Display login page.
      *
