@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
+    Route::get('/', 'AdminController@dashboard')->name('home.index');
     Route::group(['middleware' => ['guest']], function() {
         /**
          * Login Routes
