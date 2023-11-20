@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
-    Route::get('/', 'AdminController@dashboard')->name('home.index');
     Route::group(['middleware' => ['guest']], function() {
         /**
          * Login Routes
@@ -32,6 +31,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
         Route::get('/admin/kelolamenu', 'AdminController@tambahMenuForm')->name('admin.tambahMenuForm');
+        Route::post('/admin/kelolamenu', 'AdminController@tambahMenu')->name('admin.tambahMenu');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
