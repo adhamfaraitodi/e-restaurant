@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateMenuRequest;
 
 class MenuController extends Controller
 {
     public function show(){
-        $menus = Menu::latest()->paginate(10);
+        $menus = Menu::all();
 
         return view('admin.menu', compact('menus'));
     }
@@ -33,12 +34,14 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy($menuId)
     {
+        $menu = Menu::findOrFail($menuId);
         $menu->delete();
 
-        return redirect()->route('menu.show')
-            ->withSuccess(__('menu deleted successfully.'));
+        return response()->json(array('success' => 'Menu deleted successfully.'),200);
+        // return redirect()->route('menu.show')
+        //     ->withSuccess(__('menu deleted successfully.'));
     }
     public function create()
     {
@@ -72,7 +75,7 @@ class MenuController extends Controller
         $menuId = $menu->id;
         $path = $request->foodImg->store('img/menu/'.$menuId, 'public');
 
-        $menu->id_admin = 1; // Nanti ambil id nya dari auth session,sementara 1 dulu
+        $menu->id_admin = Auth::user()->id; // Nanti ambil id nya dari auth session,sementara 1 dulu
         $menu->name = $request->foodName;
         $menu->desc = $request->foodDesc;
         $menu->image_path = $path;

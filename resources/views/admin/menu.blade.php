@@ -17,24 +17,25 @@
                             <p class="text-muted font-13 m-b-30">
 
                             </p>
-                            <table id="datatable-fixed-header" class="table table-striped table-bordered" style="width:100%">
+                            <table id="ManageMenuTable" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>Deskripsi</th>
-                                    <th>Foto</th>
-                                    <th>Stok</th>
-                                    <th>Terjual</th>
-                                    <th>Favorit</th>
-                                    <th>Jenis Makanan</th>
-                                    <th>Harga</th>
-                                    <th>Diskon</th>
-                                    <th scope="col" colspan="3"></th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Stok</th>
+                                    <th scope="col">Terjual</th>
+                                    <th scope="col">Favorit</th>
+                                    <th scope="col">Jenis Makanan</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Diskon</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                                 </thead>
-
-
                                 <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
                                 @foreach($menus as $menu)
                                     <tr>
                                         <td>{{ $menu->name }}</td>
@@ -46,13 +47,16 @@
                                         <td>{{ $menu->food_type }}</td>
                                         <td>{{ $menu->price_food }}</td>
                                         <td>{{ $menu->discount }}</td>
-                                        <td><a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a></td>
                                         <td>
-                                            {!! Form::open(['method' => 'DELETE','route' => ['menu.destroy', $menu->id],'style'=>'display:inline']) !!}
-                                            {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm', 'title' => 'Delete']) !!}
-                                            {!! Form::close() !!}
+                                            <div class="d-flex justify-content-center">
+                                                <a href="{{ route('menu.edit', $menu->id) }}" class="btn"><i class="fa fa-edit text-info" style="font-size: 24px"></i></a>
+                                                <button id="btnMenuDelete{{ $menu->id }}" class="btn" onclick="destroyMenu({{ $menu->id }})"><i class="fa fa-trash text-danger" style="font-size: 24px"></i></button>
+                                            </div>
                                         </td>
                                     </tr>
+                                    @php
+                                        $no++;
+                                    @endphp
                                 @endforeach
 
                                 </tbody>

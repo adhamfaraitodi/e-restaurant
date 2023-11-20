@@ -25,6 +25,6 @@ class Menu extends Model
 
     public function Admin()
     {
-        return $this->HasOne(User::class);
+        return $this->HasOne(Admin::class);
     }
 }
