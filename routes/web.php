@@ -31,8 +31,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
-        Route::get('/admin/kelolamenu', 'AdminController@tambahMenuForm')->name('admin.tambahMenuForm');
-        Route::post('/admin/kelolamenu', 'AdminController@tambahMenu')->name('admin.tambahMenu');
+        Route::get('/admin/menu/kelolamenu', 'MenuController@show')->name('menu.show');
+        Route::get('/admin/menu/{menu}/edit', 'MenuController@edit')->name('menu.edit');
+        Route::get('/admin/menu/tambah', 'MenuController@create')->name('menu.create');
+        Route::post('/admin/menu/tambah', 'MenuController@store')->name('menu.store');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });

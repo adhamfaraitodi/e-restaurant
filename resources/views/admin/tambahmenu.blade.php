@@ -25,7 +25,7 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form id="tambahMenuForm" enctype="multipart/form-data" method="POST" action="{{ route('admin.tambahMenu') }}" data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="tambahMenuForm" enctype="multipart/form-data" method="POST" action="{{ route('menu.store') }}" data-parsley-validate class="form-horizontal form-label-left">
                         @csrf
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="foodName">Nama Makanan <span class="required">*</span>
