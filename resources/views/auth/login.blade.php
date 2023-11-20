@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('body_class','login')
-@section('content')
+@section('content_login')
     <div>
         <a class="hiddenanchor" id="signup"></a>
         <a class="hiddenanchor" id="signin"></a>

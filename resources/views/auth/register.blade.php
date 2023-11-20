@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('body_class','register')
-@section('content')
+@section('content_login')
 <form method="post" action="{{ route('register.perform') }}">
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
