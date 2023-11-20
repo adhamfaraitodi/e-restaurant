@@ -15,18 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{
+    Route::group(['middleware' => ['guest']], function() {
+        /**
+         * Login Routes
+         */
+        Route::get('/admin/login', 'LoginController@show')->name('login.show');
+        Route::post('/admin/login', 'LoginController@login')->name('login.perform');
+        Route::get('/admin/register','RegisterController@show')->name('register.show');
+        Route::post('/admin/register','RegisterController@register')->name('register.perform');
+
+    });
+
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
+        Route::get('/admin/kelolamenu', 'AdminController@tambahMenuForm')->name('admin.tambahMenuForm');
+        Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
+    });
 });
 
-Route::controller(LoginRegisterController::class)->group(function() {
-    Route::get('/admin/login', 'login')->name('login');
-    Route::post('/logout', 'logout')->name('logout');
-
-});
-
-Route::controller(AdminController::class)->group(function(){
-    Route::get('/admin/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/admin/tambahMenuForm','tambahMenuForm')->name('admin.tambahMenuForm');
-    Route::post('/admin/tambahMenu','tambahMenu')->name('admin.tambahMenu');
-});

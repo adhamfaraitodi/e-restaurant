@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 
+
 class AdminController extends Controller
 {
     //
@@ -17,7 +18,6 @@ class AdminController extends Controller
     {
         return view('admin.tambahmenu');
     }
-
     public function tambahMenu(Request $request)
     {
         $request->validate([
@@ -42,10 +42,10 @@ class AdminController extends Controller
             $menu->id = $maxID + 1;
         }
 
-        $imageName = 'Menu'.'.'.$request->foodImg->extension();  
+        $imageName = 'Menu'.'.'.$request->foodImg->extension();
         $menuId = $menu->id;
         $path = $request->foodImg->store('img/menu/'.$menuId, 'public');
-    
+
         $menu->id_admin = 1; // Nanti ambil id nya dari auth session,sementara 1 dulu
         $menu->name = $request->foodName;
         $menu->desc = $request->foodDesc;
@@ -59,6 +59,6 @@ class AdminController extends Controller
         $menu->save();
 
         return redirect()->route('admin.tambahMenuForm');
-    
+
     }
 }

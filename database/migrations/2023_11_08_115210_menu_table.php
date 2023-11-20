@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->unsignedSmallInteger('id_admin');
-            $table->foreign('id_admin')->references('id')->on('admin');
+            $table->foreign('id_admin')->references('id')->on('admins');
             $table->string('name');
             $table->string('desc');
             $table->string('image_path');

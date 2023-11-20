@@ -1,4 +1,10 @@
 @extends('admin.layouts.admin')
 @section('content')
-<h5>hai</h5>
+
+    @if (Session::has('key'))
+        <h5>berhasil</h5>
+    @else
+        <h5>gagal</h5>
+    @endif
+
 @endsection
