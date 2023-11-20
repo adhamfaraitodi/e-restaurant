@@ -33,6 +33,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
         Route::get('/admin/menu/kelolamenu', 'MenuController@show')->name('menu.show');
         Route::get('/admin/menu/{menu}/edit', 'MenuController@edit')->name('menu.edit');
+        Route::patch('/admin/menu/{menu}/update', 'MenuController@update')->name('menu.update');
+        Route::delete('/admin/menu/{menu}/delete', 'MenuController@destroy')->name('menu.destroy');
         Route::get('/admin/menu/tambah', 'MenuController@create')->name('menu.create');
         Route::post('/admin/menu/tambah', 'MenuController@store')->name('menu.store');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');

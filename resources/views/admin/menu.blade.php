@@ -39,14 +39,19 @@
                                     <tr>
                                         <td>{{ $menu->name }}</td>
                                         <td>{{ $menu->desc }}</td>
-                                        <td>{{ $menu->image_path }}</td>
+                                        <td><img src="{{ Storage::url($menu->image_path) }}"></td>
                                         <td>{{ $menu->number_available }}</td>
                                         <td>{{ $menu->number_sale }}</td>
                                         <td>{{ $menu->favorite }}</td>
                                         <td>{{ $menu->food_type }}</td>
                                         <td>{{ $menu->price_food }}</td>
                                         <td>{{ $menu->discount }}</td>
-                                        <td><a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-info btn-sm">Edit</a></td>
+                                        <td><a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a></td>
+                                        <td>
+                                            {!! Form::open(['method' => 'DELETE','route' => ['menu.destroy', $menu->id],'style'=>'display:inline']) !!}
+                                            {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm', 'title' => 'Delete']) !!}
+                                            {!! Form::close() !!}
+                                        </td>
                                     </tr>
                                 @endforeach
 

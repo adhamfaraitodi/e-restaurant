@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateMenuRequest;
 
 class MenuController extends Controller
 {
@@ -12,8 +13,32 @@ class MenuController extends Controller
 
         return view('admin.menu', compact('menus'));
     }
-    public function edit(){
+    /**
+     * Edit user data
+     *
+     * @param Menu $menu
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Menu $menu)
+    {
+        return view('admin.editmenu', [
+            'menu' => $menu
+        ]);
+    }
+    /**
+     * Delete user data
+     *
+     * @param Menu $menu
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Menu $menu)
+    {
+        $menu->delete();
 
+        return redirect()->route('menu.show')
+            ->withSuccess(__('menu deleted successfully.'));
     }
     public function create()
     {
@@ -61,5 +86,20 @@ class MenuController extends Controller
 
         return redirect()->route('menu.create');
 
+    }
+    /**
+     * Update user data
+     *
+     * @param Menu $menu
+     * @param UpdateUserRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Menu $menu, UpdateMenuRequest $request)
+    {
+        $menu->update($request->validated());
+
+        return redirect()->route('menu.show')
+            ->withSuccess(__('menu updated successfully.'));
     }
 }
