@@ -29,6 +29,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
+        $data['image_path'] = null;
         $user = Admin::create($data);
         // auth('admins')->login($user);
         Auth::guard()->login($user);

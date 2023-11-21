@@ -25,10 +25,20 @@ class DatabaseSeeder extends Seeder
             'image_path' => '/img',
             'phone_number' => '08123',
             'address' => 'Sleman',
-            'job' => 'Owner',
+            'job' => 'owner',
             'username' => 'david',
             'password' => '12345678'
         ]);
 
+        Admin::create([
+            'name' => 'Adham',
+            'email' => 'test@mail.com',
+            'image_path' => '/img',
+            'phone_number' => '08123',
+            'address' => 'Sleman',
+            'job' => 'owner',
+            'username' => 'adham',
+            'password' => '12345678'
+        ]);
     }
 }

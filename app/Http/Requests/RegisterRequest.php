@@ -30,7 +30,7 @@ class RegisterRequest extends FormRequest
             'address' => 'required',
             'phone_number' => 'required|max:16',
             'job' => 'required|max:14',
-            'password' => 'required|min:8',
+            'password' => 'required',
             'password_confirmation' => 'required|same:password'
         ];
     }

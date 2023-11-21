@@ -20,13 +20,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
     Route::group(['middleware' => ['guest']], function() {
         /**
-         * Login Routes
+         * Routes admin
          */
         Route::get('/admin/login', 'LoginController@show')->name('login.show');
         Route::post('/admin/login', 'LoginController@login')->name('login.perform');
         Route::get('/admin/register','RegisterController@show')->name('register.show');
         Route::post('/admin/register','RegisterController@register')->name('register.perform');
-
+        /**
+         * Routes Customer
+         */
+        Route::get('/pesan/{meja}', 'LoginController@show')->name('login.show');
     });
 
     Route::group(['middleware' => ['auth']], function() {

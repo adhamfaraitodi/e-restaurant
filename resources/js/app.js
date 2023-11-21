@@ -8,7 +8,9 @@ import '../assets/jqvmap/dist/jqvmap.min.css';
 import '../assets/bootstrap-daterangepicker/daterangepicker.css';
 import '../assets/custom.min.css';
 
-let ManageMenuTable = new DataTable('#ManageMenuTable');
+let ManageMenuTable = new DataTable('#ManageMenuTable',{
+    lengthMenu: [[5,10,-1],[5,10,'All']]
+});
 
 window.destroyMenu = function (idMenu) {
     $.ajax({

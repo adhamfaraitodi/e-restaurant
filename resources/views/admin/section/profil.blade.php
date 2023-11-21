@@ -5,8 +5,8 @@
     </div>
     <div class="profile_info">
         <span>Welcome,</span>
-        <h2>nama aktif</h2>
-        <h2><small>job aktif</small</h2>
+        <h2>{{ Auth::user()->name }}</h2>
+        <h2><small>{{ Auth::user()->job }}</small></h2>
     </div>
 </div>
 <!-- /menu profile quick info -->
