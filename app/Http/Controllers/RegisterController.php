@@ -29,13 +29,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
-        $data['name'] = $data['username'];
-        $data['phone_number'] = '';
-        $data['image_path'] = '';
-        $data['address'] = '';
-        $data['job'] = 'karyawan';
         $user = Admin::create($data);
-
         // auth('admins')->login($user);
         Auth::guard()->login($user);
 
