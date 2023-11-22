@@ -29,7 +29,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Routes Customer
          */
-        Route::get('/pesan/{meja}', 'LoginController@show')->name('login.show');
+        Route::get('/', 'AdminController@show')->name('admin.show');
+        Route::get('/pesan/{meja}', 'PesanController@show')->name('pesan.show');
     });
 
     Route::group(['middleware' => ['auth']], function() {

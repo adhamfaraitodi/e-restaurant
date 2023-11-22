@@ -1,4 +1,5 @@
 @extends('admin.layouts.admin')
+@section('tittle','admin')
 @section('content')
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">

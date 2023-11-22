@@ -1,4 +1,5 @@
 @extends('admin.layouts.admin')
+@section('tittle','admin')
 @section('content')
     <form method="post" action="{{ route('admin.tambahakunperform') }}">
 
