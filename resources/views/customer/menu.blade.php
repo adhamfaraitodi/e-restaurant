@@ -1,6 +1,7 @@
 @extends('customer.layouts.customer')
 @section('title_cus','pesan')
 @section('content_cus')
+    @include('customer.component.banner')
     <section id="latest-blog" class="padding-large">
         <div class="container">
             <div class="row">
