@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('body_class','nav-md')
-
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col menu_fixed">

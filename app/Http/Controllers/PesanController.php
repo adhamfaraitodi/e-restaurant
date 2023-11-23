@@ -9,4 +9,7 @@ class PesanController extends Controller
     public function show(){
         return view('customer.pesan');
     }
+    public function test(){
+        return view('customer.menu');
+    }
 }

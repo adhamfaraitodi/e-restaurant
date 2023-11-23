@@ -1,5 +1,5 @@
 @extends('customer.layouts.customer')
-@section('tittle','pesan')
-@section('content')
+@section('title_cus','pesan')
+@section('content_cus')
 
 @endsection

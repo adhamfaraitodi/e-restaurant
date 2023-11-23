@@ -26,7 +26,7 @@ window.destroyMenu = function (idMenu) {
         success: function (response) {
             alert(response.success);
             // mendapatkan instance datatable
-        
+
 
         // menghapus baris saat tombol di klik
         ManageMenuTable.row($('#btnMenuDelete' + idMenu).closest('tr')).remove().draw();

@@ -31,6 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/', 'AdminController@show')->name('admin.show');
         Route::get('/pesan/{meja}', 'PesanController@show')->name('pesan.show');
+        Route::get('/pesan/{meja}/menu', 'PesanController@test')->name('pesan.test');
+
     });
 
     Route::group(['middleware' => ['auth']], function() {
