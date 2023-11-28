@@ -13,12 +13,14 @@
                         <h4>beritahu kami namamu</h4>
                         <br>
                     </div>
-                    <form>
+                    <form method="POST" action="{{ route('pesan.setupSession') }}">
+                        @csrf
+                        <input type="hidden" id="id" name="id" value="{{ $idMeja }}">
                         <br><br>
                         <div class="mb-3">
-                            <label for="email-login" class="form-label">Nama Pemesan</label>
-                            <input type="text"class="form-control"id="namacus"/>
-                            <div id="emailHelp" class="form-text">
+                            <label for="namaCus" class="form-label">Nama Pemesan</label>
+                            <input type="text"class="form-control"id="namaCus" name="namaCus"/>
+                            <div id="namaCusHelp" class="form-text">
                                 We'll never share your name with anyone else.
                             </div>
                         </div>

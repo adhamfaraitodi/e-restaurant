@@ -29,11 +29,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Routes Customer
          */
-        Route::get('/', 'AdminController@show')->name('admin.show');
         Route::get('/meja/{meja}', 'PesanController@show')->name('pesan.show');
-        Route::get('/meja/{meja}/menu', 'PesanController@menu')->name('pesan.menu');
-        Route::get('/meja/{meja}/keranjang', 'PesanController@cartshow')->name('pesan.cartshow');
-        Route::get('/meja/{meja}/bayar', 'PesanController@test')->name('pesan.test');
+        Route::post('/customer/setupSession','PesanController@setupSession')->name('pesan.setupSession');
+        Route::group(['middleware' => ['customerSessionCheck']],function(){
+            Route::get('/meja/{meja}/menu', 'PesanController@menu')->name('pesan.menu');
+            Route::get('/meja/{meja}/keranjang', 'PesanController@cartshow')->name('pesan.cartshow');
+            Route::get('/meja/{meja}/bayar', 'PesanController@test')->name('pesan.test');
+        });
+
+        Route::get('/', 'AdminController@show')->name('admin.show');
+
     });
 
     Route::group(['middleware' => ['auth']], function() {
