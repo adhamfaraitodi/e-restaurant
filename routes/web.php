@@ -31,8 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/', 'AdminController@show')->name('admin.show');
         Route::get('/meja/{meja}', 'PesanController@show')->name('pesan.show');
-        Route::get('/meja/{meja}/menu', 'PesanController@test')->name('pesan.test');
-        Route::get('/meja/{meja}/keranjang', 'PesanController@test')->name('pesan.test');
+        Route::get('/meja/{meja}/menu', 'PesanController@menu')->name('pesan.menu');
+        Route::get('/meja/{meja}/keranjang', 'PesanController@cartshow')->name('pesan.cartshow');
         Route::get('/meja/{meja}/bayar', 'PesanController@test')->name('pesan.test');
     });
 
