@@ -19,6 +19,9 @@ class CustomerSessionCheck
             if ($request->session()->exists('idMeja'))
                 if($request->session()->get('idMeja') == $request->route()->parameter('meja'))
                     return $next($request);
+                else{
+                    return redirect()->route('pesan.show',$request->session()->get('idMeja'));
+                } 
         return redirect()->route('pesan.show',$request->route()->parameter('meja')); // <- parameters here
     }
 }
