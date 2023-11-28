@@ -16,7 +16,9 @@ class CustomerSessionCheck
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->session()->exists('nameCus'))
-            return $next($request);
+            if ($request->session()->exists('idMeja'))
+                if($request->session()->get('idMeja') == $request->route()->parameter('meja'))
+                    return $next($request);
         return redirect()->route('pesan.show',$request->route()->parameter('meja')); // <- parameters here
     }
 }

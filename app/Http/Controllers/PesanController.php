@@ -20,6 +20,7 @@ class PesanController extends Controller
     public function setupSession(Request $request)
     {
         $request->session()->put('nameCus',$request->input('namaCus'));
+        $request->session()->put('idMeja',$request->input('id'));
         return redirect()->route('pesan.menu', $request->input('id'));
     }
 }
