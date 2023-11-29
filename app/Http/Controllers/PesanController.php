@@ -16,6 +16,7 @@ class PesanController extends Controller
     }
     public function addMenuCart($mejaID,$id){
         $menu =Menu::findorfail($id);
+        $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {

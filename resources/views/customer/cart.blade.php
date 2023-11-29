@@ -17,6 +17,7 @@
                             <th scope="col">Harga</th>
                             <th scope="col">Diskon</th>
                             <th scope="col">total</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,7 +29,8 @@
                                     <td data-th="Product">{{ $details['name'] }}</td>
                                     <td data-th="quantity">{{ $details['quantity'] }}</td>
                                     <td data-th="Price">{{ $details['price'] }}</td>
-                                    <td data-th="Subtotal" class="text-center"></td>
+                                    <td data-th="diskon">{{ $details['price'] }}</td>
+                                    <td data-th="total">{{ $details['price'] }}</td>
                                     <td class="actions">
                                         <a class="btn btn-outline-danger btn-sm delete-product"><i class="fa fa-trash-o"></i></a>
                                     </td>
@@ -36,6 +38,14 @@
                             @endforeach
                         @endif
                         </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-right">
+                                <a href="{{ url('/home') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                                <button class="btn btn-danger">Checkout</button>
+                            </td>
+                        </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
