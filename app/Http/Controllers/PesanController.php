@@ -24,11 +24,28 @@ class PesanController extends Controller
                 "name" => $menu->name,
                 "quantity" => 1,
                 "price" => $menu->price_food,
-                "image" => $menu->image_path
+                "image" => $menu->image_path,
+                "discount" => 0,
+                "total" => 0
             ];
         }
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'menambahkan ke keranjang');
+        return redirect()->back();
+    }
+    public function cartdelete($mejaID,$id,Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash();
+        }
+    }
+    public function flush($mejaID){
+        session()->forget('cart');
+        return redirect()->back();
     }
     public function cartshow($mejaID){
         return view('customer.cart ',['idMeja' => $mejaID]);
