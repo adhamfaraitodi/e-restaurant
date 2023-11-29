@@ -20,13 +20,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Terjual</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Diskon</th>
-                            <th scope="col">total</th>
-                        </tr>
+                        @php $total = 0 @endphp
+                        @if(session('cart'))
+                            @foreach(session('cart') as $id => $details)
+
+                                <tr rowId="{{ $id }}">
+                                    <td data-th="Product">{{ $details['name'] }}</td>
+                                    <td data-th="quantity">{{ $details['quantity'] }}</td>
+                                    <td data-th="Price">{{ $details['price'] }}</td>
+                                    <td data-th="Subtotal" class="text-center"></td>
+                                    <td class="actions">
+                                        <a class="btn btn-outline-danger btn-sm delete-product"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>

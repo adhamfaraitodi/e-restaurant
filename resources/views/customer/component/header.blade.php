@@ -1,7 +1,7 @@
 <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('pesan.show',['meja' => session('idMeja')])}}">
                 <img src="{{asset('img/logooooo.png')}}" class="logo">
             </a>
             <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
                         <li class="nav-item">
                             <div class="user-items ps-5">
                                 <ul class="d-flex justify-content-end list-unstyled">
-                                        <a href="#"><svg class="cart" width="10em" height="10em"><use xlink:href="#cart-outline"></use></svg></a>
+                                        <a href="{{ route('pesan.cartshow',['meja' => session('idMeja')]) }}"><svg class="cart" width="10em" height="10em"><use xlink:href="#cart-outline"></use></svg></a>
                                 </ul>
                             </div>
                         </li>

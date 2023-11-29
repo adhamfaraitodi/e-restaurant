@@ -33,6 +33,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/customer/setupSession','PesanController@setupSession')->name('pesan.setupSession');
         Route::group(['middleware' => ['customerSessionCheck']],function(){
             Route::get('/meja/{meja}/menu', 'PesanController@menu')->name('pesan.menu');
+            Route::get('/meja/{meja}/menu/{id}', 'PesanController@addMenuCart')->name('pesan.add');
             Route::get('/meja/{meja}/keranjang', 'PesanController@cartshow')->name('pesan.cartshow');
             Route::get('/meja/{meja}/bayar', 'PesanController@test')->name('pesan.test');
         });

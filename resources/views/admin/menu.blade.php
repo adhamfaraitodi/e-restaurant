@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $menu->name }}</td>
                                         <td>{{ $menu->desc }}</td>
-                                        <td><img src="{{ Storage::url($menu->image_path) }}"></td>
+                                        <td><img src="{{ Storage::url($menu->image_path) }}" style="width:40%; height:40%;"></td>
                                         <td>{{ $menu->number_available }}</td>
                                         <td>{{ $menu->number_sale }}</td>
                                         <td>{{ $menu->favorite }}</td>
