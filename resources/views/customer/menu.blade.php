@@ -35,7 +35,7 @@
                                 <span class="meta-category">{{ $menu->desc }}</span>
                             </div>
                             <br>
-                            <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}"><svg class="star star-empty" width="2em" height="2em"><use xlink:href="#star-empty"></use></svg></a>
+                            <a href=""><svg class="star star-empty" width="2em" height="2em"><use xlink:href="#star-empty"></use></svg></a>
                             <span style="margin-right: 10px;"></span>
                             <a href="{{ route('pesan.add',['meja' => session('idMeja'),'id' => $menu->id])}}"><svg class="cart-outline" width="2em" height="2em"><use xlink:href="#cart-outline"></use></svg></a>
                         </div>

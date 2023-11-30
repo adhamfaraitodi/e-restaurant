@@ -24,11 +24,24 @@ class PesanController extends Controller
             "price" => $menu->price_food,
             "image" => $menu->image_path,
             "discount" => 0,
+            'subtotal'=>0,
             "total" => 0
         ];
-
+        // Calculate subtotal and total for the item
+        $cart[$id]['subtotal'] = ($cart[$id]['price'] - $cart[$id]['discount']) * $cart[$id]['quantity'];
+        // Update the cart in the session
         session(['cart' => $cart]);
 
+        // Calculate total by summing up all subtotals in the cart
+        $total = array_sum(array_column($cart, 'subtotal'));
+
+        // Update total for each item in the cart
+        foreach ($cart as &$item) {
+            $item['total'] = $total;
+        }
+
+        // Update the cart in the session with the recalculated totals
+        session(['cart' => $cart]);
         return redirect()->back();
     }
     public function cartdelete($mejaID, $id, Request $request)

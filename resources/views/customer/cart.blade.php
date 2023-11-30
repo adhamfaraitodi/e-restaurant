@@ -13,10 +13,10 @@
                         <thead>
                         <tr>
                             <th scope="col">Nama</th>
-                            <th scope="col">Terjual</th>
+                            <th scope="col">Qty</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Diskon</th>
-                            <th scope="col">total</th>
+                            <th scope="col">sub total</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -29,7 +29,7 @@
                                     <td data-th="quantity">{{ $details['quantity'] }}</td>
                                     <td data-th="Price">{{ $details['price'] }}</td>
                                     <td data-th="diskon">{{ $details['discount'] }}</td>
-                                    <td data-th="total">{{ $details['quantity'] * ($details['price'] - $details['discount']) }}</td>
+                                    <td data-th="total">{{ $details['subtotal']}}</td>
                                     <td class="actions">
                                         <form action="{{ route('pesan.cartdelete', ['meja' => session('idMeja'), 'id' => $id]) }}" method="post">
                                             @csrf
@@ -46,9 +46,21 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td colspan="5" class="text-right">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total : </td>
+                            @foreach(session('cart') as $id => $details)
+                            <td colspan="4" class="text-right">{{ $details['total'] }}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right">
                                 <a href="{{ route('pesan.menu',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                            <td class="actions">
+                            <td class="actions text-right">
+                                <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Clear</a></a>
+                            </td>
+                            <td class="actions text-right">
                                 <a class="btn btn-primary"><i class="fa fa-angle-left"></i> Clear</a></a>
                             </td>
                         </tr>
