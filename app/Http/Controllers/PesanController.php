@@ -14,34 +14,38 @@ class PesanController extends Controller
         $menus = Menu::all();
         return view('customer.menu',compact('mejaID', 'menus'));
     }
-    public function addMenuCart($mejaID,$id){
-        $menu =Menu::findorfail($id);
+    public function addMenuCart($mejaID, $id)
+    {
+        $menu = Menu::findOrFail($id);
         $cart = session()->get('cart', []);
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $menu->name,
-                "quantity" => 1,
-                "price" => $menu->price_food,
-                "image" => $menu->image_path,
-                "discount" => 0,
-                "total" => 0
-            ];
-        }
-        session()->put('cart', $cart);
+        $cart[$id] = [
+            "name" => $menu->name,
+            "quantity" => isset($cart[$id]) ? $cart[$id]['quantity'] + 1 : 1,
+            "price" => $menu->price_food,
+            "image" => $menu->image_path,
+            "discount" => 0,
+            "total" => 0
+        ];
+
+        session(['cart' => $cart]);
+
         return redirect()->back();
     }
-    public function cartdelete($mejaID,$id,Request $request)
+    public function cartdelete($mejaID, $id, Request $request)
     {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
+        if ($request->id) {
+            $cart = session()->get('cart', []);
+
+            if (isset($cart[$request->id])) {
+                // Remove the item with the specified ID from the cart
                 unset($cart[$request->id]);
-                session()->put('cart', $cart);
+
+                // Update the session cart with the modified array
+                session(['cart' => $cart]);
             }
-            session()->flash();
         }
+
+        return redirect()->back();
     }
     public function flush($mejaID){
         session()->forget('cart');

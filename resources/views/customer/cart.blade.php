@@ -31,9 +31,14 @@
                                     <td data-th="diskon">{{ $details['discount'] }}</td>
                                     <td data-th="total">{{ $details['quantity'] * ($details['price'] - $details['discount']) }}</td>
                                     <td class="actions">
-                                        <a href="{{ route('pesan.cartdelete', ['meja' => session('idMeja'), 'id' => $id]) }}">
-                                            <svg class="close" width="2em" height="2em">&nbsp;<use xlink:href="#close"></use></svg>
-                                        </a>
+                                        <form action="{{ route('pesan.cartdelete', ['meja' => session('idMeja'), 'id' => $id]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <button type="submit" class="delete-product">
+                                                <svg class="close" width="2em" height="2em">&nbsp;<use xlink:href="#close"></use></svg>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -44,7 +49,7 @@
                             <td colspan="5" class="text-right">
                                 <a href="{{ route('pesan.menu',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                             <td class="actions">
-                                <a class="btn btn-primary delete-product"><i class="fa fa-angle-left"></i> Clear</a></a>
+                                <a class="btn btn-primary"><i class="fa fa-angle-left"></i> Clear</a></a>
                             </td>
                         </tr>
                         </tfoot>
@@ -54,25 +59,15 @@
         </div>
     </div>
 </section>
-<script>
-    $(".delete-product").click(function (e) {
-        e.preventDefault();
-
-        var ele = $(this);
-
-        if(confirm("Do you really want to delete?")) {
-            $.ajax({
-                url: '{{ route('pesan.cartdelete',['meja' => session('idMeja')])}}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    id: ele.parents("tr").attr("rowId")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
-    });
-</script>
+<style>
+    /* Add this style to your CSS or in a style tag within your HTML */
+    .delete-product {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+</style>
 @endsection
