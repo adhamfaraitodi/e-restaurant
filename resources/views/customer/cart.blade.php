@@ -17,7 +17,7 @@
                             <th scope="col">Harga</th>
                             <th scope="col">Diskon</th>
                             <th scope="col">sub total</th>
-                            <th></th>
+                            <th scope="col">hapus</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,17 +51,18 @@
                             <td></td>
                             <td>Total : </td>
                             @foreach(session('cart') as $id => $details)
-                            <td colspan="4" class="text-right">{{ $details['total'] }}</td>
+                                <td colspan="4" class="text-right">{{ $details['total'] }}</td>
+                                @break
                             @endforeach
                         </tr>
                         <tr>
-                            <td colspan="4" class="text-right">
+                            <td colspan="3" class="text-right">
                                 <a href="{{ route('pesan.menu',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                            <td class="actions text-right">
-                                <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Clear</a></a>
+                            <td class="actions text-right"colspan="2">
+                                <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Clear all</a></a>
                             </td>
                             <td class="actions text-right">
-                                <a class="btn btn-primary"><i class="fa fa-angle-left"></i> Clear</a></a>
+                                <a class="btn btn-primary"><i class="fa fa-angle-left"></i> Checkout</a></a>
                             </td>
                         </tr>
                         </tfoot>
