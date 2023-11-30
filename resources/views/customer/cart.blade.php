@@ -50,13 +50,15 @@
                             <td></td>
                             <td></td>
                             <td>Total : </td>
+                            @if(session('cart'))
                             @foreach(session('cart') as $id => $details)
                                 <td colspan="4" class="text-right">{{ $details['total'] }}</td>
                                 @break
                             @endforeach
+                            @endif
                         </tr>
                         <tr>
-                            <td colspan="3" class="text-right">
+                            <td colspan="4" class="text-right">
                                 <a href="{{ route('pesan.menu',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                             <td class="actions text-right"colspan="2">
                                 <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Clear all</a></a>
