@@ -113,7 +113,7 @@ class PesanController extends Controller
         $menuOrder->menu_note = 'None';
 
         $menuOrders[] = $menuOrder;
-        $totalPrice += $item['total'];
+        $totalPrice += $item['subtotal'];
     }
 
 
