@@ -35,6 +35,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/meja/{meja}/menu', 'PesanController@menu')->name('pesan.menu');
             Route::get('/meja/{meja}/menu/{id}', 'PesanController@addMenuCart')->name('pesan.add');
             Route::get('/meja/{meja}/keranjang', 'PesanController@cartshow')->name('pesan.cartshow');
+            Route::get('/meja/{meja}/keranjang/checkout', 'PesanController@checkOut')->name('pesan.checkout');
             Route::delete('/meja/{meja}/keranjang/{id}', 'PesanController@cartdelete')->name('pesan.cartdelete');
             Route::get('/meja/{meja}/flush', 'PesanController@flush')->name('pesan.flush');
             Route::get('/meja/{meja}/bayar', 'PesanController@test')->name('pesan.test');

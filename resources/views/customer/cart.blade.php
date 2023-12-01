@@ -64,7 +64,7 @@
                                 <a href="{{ route('pesan.flush',['meja' => session('idMeja')])}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i> Clear all</a></a>
                             </td>
                             <td class="actions text-right">
-                                <a class="btn btn-primary"><i class="fa fa-angle-left"></i> Checkout</a></a>
+                                <a href="{{ route('pesan.checkout',['meja' => session('idMeja')]) }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Checkout</a></a>
                             </td>
                         </tr>
                         </tfoot>

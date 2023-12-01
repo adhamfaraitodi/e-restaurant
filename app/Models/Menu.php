@@ -27,4 +27,9 @@ class Menu extends Model
     {
         return $this->HasOne(Admin::class);
     }
+
+    public function MenuOrder()
+    {
+        return $this->belongsTo(MenuOrder::class,'id_menu','id');
+    }
 }
