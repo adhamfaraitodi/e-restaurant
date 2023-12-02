@@ -36,16 +36,19 @@ class PesanController extends Controller
         // Update the cart in the session
         session(['cart' => $cart]);
 
-        // Calculate total by summing up all subtotals in the cart
-        $total = array_sum(array_column($cart, 'subtotal'));
 
-        // Update total for each item in the cart
-        foreach ($cart as &$item) {
-            $item['total'] = $total;
-        }
+        // Deprecated, uncomment if you still want to use this
+        
+        // // Calculate total by summing up all subtotals in the cart
+        // $total = array_sum(array_column($cart, 'subtotal'));
 
-        // Update the cart in the session with the recalculated totals
-        session(['cart' => $cart]);
+        // // Update total for each item in the cart
+        // foreach ($cart as &$item) {
+        //     $item['total'] = $total;
+        // }
+
+        // // Update the cart in the session with the recalculated totals
+        // session(['cart' => $cart]);
         return redirect()->back();
     }
     public function cartdelete($mejaID, $id, Request $request)
