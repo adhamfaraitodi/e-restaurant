@@ -4,7 +4,7 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Tabel Pesanan Masuk</h2>
+                <h2>Tabel Detail Pesanan</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -21,31 +21,26 @@
                             <table id="ManageMenuTable" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Nama Pemesan</th>
-                                    <th scope="col">No Meja</th>
-                                    <th scope="col">Status Pesanan</th>
-                                    <th scope="col">Status Pembayaran</th>
-                                    <th scope="col">Total price</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Nama Makanan</th>
+                                    <th scope="col">QTY</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Discount</th>
+                                    <th scope="col">Sub Total</th>
+                                    <th scope="col">Menu Note</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach($orders as $order)
+                                @foreach($detail as $detail)
                                     <tr>
-                                        <td>{{ $order->name }}</td>
-                                        <td>{{ $order->table_number }}</td>
-                                        <td>{{ $order->order_status }}</td>
-                                        <td>{{ $order->payment_status }}</td>
-                                        <td>{{ $order->total_price }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-center">
-                                                <a href="{{ route('pesan.detailshow', $order->id) }}" class="btn"><i class="fa fa-list text-success" style="font-size: 24px"></i></a>
-                                                <button class="btn" ><i class="fa fa-check text-info" style="font-size: 24px"></i></button>
-                                            </div>
-                                        </td>
+                                        <td>{{ $detail->name }}</td>
+                                        <td>{{ $detail->quantity }}</td>
+                                        <td>{{ $detail->price_food }}</td>
+                                        <td>{{ $detail->discount }}</td>
+                                        <td>{{ $detail->subtotal }}</td>
+                                        <td>{{ $detail->menu_note }}</td>
                                     </tr>
                                     @php
                                         $no++;

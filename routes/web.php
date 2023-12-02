@@ -53,8 +53,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/admin/menu/{menu}/delete', 'MenuController@destroy')->name('menu.destroy');
         Route::get('/admin/menu/tambah', 'MenuController@create')->name('menu.create');
         Route::post('/admin/menu/tambah', 'MenuController@store')->name('menu.store');
-        Route::get('/admin/pesan/masuk', 'PesananController@show')->name('pesan.show');
-        Route::get('/admin/pesan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
+        Route::get('/admin/pesanan/masuk', 'PesananController@show')->name('pesan.show');
+        Route::get('/admin/pesanan/masuk/{id}', 'PesananController@detailshow')->name('pesan.detailshow');
+        Route::get('/admin/pesanan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
