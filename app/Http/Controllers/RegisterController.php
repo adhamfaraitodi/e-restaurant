@@ -29,7 +29,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
-        $data['image_path'] = null;
+        $data['image_path'] = '';
         $user = Admin::create($data);
         return redirect()->back();
     }
