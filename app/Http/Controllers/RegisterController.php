@@ -29,16 +29,8 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
-        $data['name'] = $data['username'];
-        $data['phone_number'] = '';
-        $data['image_path'] = '';
-        $data['address'] = '';
-        $data['job'] = 'karyawan';
+        $data['image_path'] = null;
         $user = Admin::create($data);
-
-        // auth('admins')->login($user);
-        Auth::guard()->login($user);
-
-        return redirect('/admin')->with('success', "Account successfully registered.");
+        return redirect()->back();
     }
 }

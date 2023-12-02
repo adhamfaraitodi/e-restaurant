@@ -25,6 +25,11 @@ class Menu extends Model
 
     public function Admin()
     {
-        return $this->HasOne(User::class);
+        return $this->HasOne(Admin::class);
+    }
+
+    public function MenuOrder()
+    {
+        return $this->belongsTo(MenuOrder::class,'id_menu','id');
     }
 }

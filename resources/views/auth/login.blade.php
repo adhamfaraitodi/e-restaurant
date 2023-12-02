@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('body_class','login')
-@section('content')
+@section('content_login')
     <div>
         <a class="hiddenanchor" id="signup"></a>
         <a class="hiddenanchor" id="signin"></a>
@@ -29,15 +29,6 @@
 
                         <div class="clearfix"></div>
 
-                        <div class="separator">
-                            <p class="change_link">New to site?
-                                <a href="{{ route('register.show') }}" class="to_register"> Create Account </a>
-                            </p>
-
-                            <div class="clearfix"></div>
-                            <br />
-
-                        </div>
                     </form>
                 </section>
             </div>

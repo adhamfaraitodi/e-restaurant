@@ -4,7 +4,7 @@
     @include('include.head')
 </head>
 <body class="@yield('body_class')">
-        @yield('content')
+        @yield('content_login')
         @include('include.footer')
 </body>
 </html>

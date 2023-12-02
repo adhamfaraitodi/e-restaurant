@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('name', 50);
-            $table->string('phone_number',20);
-            $table->string('email',50);
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('phone_number',20)->nullable();
+            $table->string('email',50)->nullable();
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }
