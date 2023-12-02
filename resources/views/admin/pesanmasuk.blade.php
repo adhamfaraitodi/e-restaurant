@@ -43,7 +43,12 @@
                                         <td>
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('pesan.detailshow', $order->id) }}" class="btn"><i class="fa fa-list text-success" style="font-size: 24px"></i></a>
-                                                <button class="btn" ><i class="fa fa-check text-info" style="font-size: 24px"></i></button>
+                                                <form action="{{ route('pesan.pesananselesai', $order->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn">
+                                                        <i class="fa fa-check text-info" style="font-size: 24px"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

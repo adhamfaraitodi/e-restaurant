@@ -55,6 +55,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/admin/menu/tambah', 'MenuController@store')->name('menu.store');
         Route::get('/admin/pesanan/masuk', 'PesananController@show')->name('pesan.show');
         Route::get('/admin/pesanan/masuk/{id}', 'PesananController@detailshow')->name('pesan.detailshow');
+        Route::post('/admin/pesanan/selesai/{id}', 'PesananController@pesananselesai')->name('pesan.pesananselesai');
         Route::get('/admin/pesanan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
