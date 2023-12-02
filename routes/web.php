@@ -24,8 +24,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/admin/login', 'LoginController@show')->name('login.show');
         Route::post('/admin/login', 'LoginController@login')->name('login.perform');
-        Route::get('/admin/register','RegisterController@show')->name('register.show');
-        Route::post('/admin/register','RegisterController@register')->name('register.perform');
         /**
          * Routes Customer
          */
@@ -47,6 +45,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
+        Route::get('/admin/register','RegisterController@show')->name('register.show');
+        Route::post('/admin/register','RegisterController@register')->name('register.perform');
         Route::get('/admin/menu/kelolamenu', 'MenuController@show')->name('menu.show');
         Route::get('/admin/menu/{menu}/edit', 'MenuController@edit')->name('menu.edit');
         Route::patch('/admin/menu/{menu}/update', 'MenuController@update')->name('menu.update');
@@ -58,6 +58,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/admin/pesanan/selesai/{id}', 'PesananController@pesananselesai')->name('pesan.pesananselesai');
         Route::get('/admin/pesanan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
         Route::get('/admin/laporan', 'LaporanController@show')->name('laporan.show');
+        Route::get('/admin/karyawan','KaryawanController@show')->name('karyawan.show');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });

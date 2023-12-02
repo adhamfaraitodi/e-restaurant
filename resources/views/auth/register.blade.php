@@ -1,6 +1,6 @@
-@extends('layouts.app')
-@section('body_class','register')
-@section('content_login')
+@extends('admin.layouts.admin')
+@section('tittle','admin')
+@section('content')
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>

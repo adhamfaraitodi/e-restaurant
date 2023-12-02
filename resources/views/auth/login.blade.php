@@ -29,15 +29,6 @@
 
                         <div class="clearfix"></div>
 
-                        <div class="separator">
-                            <p class="change_link">New to site?
-                                <a href="{{ route('register.show') }}" class="to_register"> Create Account </a>
-                            </p>
-
-                            <div class="clearfix"></div>
-                            <br />
-
-                        </div>
                     </form>
                 </section>
             </div>

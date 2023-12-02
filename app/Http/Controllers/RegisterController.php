@@ -31,9 +31,6 @@ class RegisterController extends Controller
         $data = $request->validated();
         $data['image_path'] = null;
         $user = Admin::create($data);
-        // auth('admins')->login($user);
-        Auth::guard()->login($user);
-
-        return redirect('/admin')->with('success', "Account successfully registered.");
+        return redirect()->back();
     }
 }
