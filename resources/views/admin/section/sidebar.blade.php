@@ -22,7 +22,7 @@
             </li>
             <li><a><i class="fa fa-file-text"></i> Laporan <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="laporan">Laporan</a></li>
+                    <li><a href="{{route('laporan.show')}}">Laporan</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-user-plus"></i> Kelola Karyawan <span class="fa fa-chevron-down"></span></a>

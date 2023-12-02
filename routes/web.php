@@ -57,6 +57,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/admin/pesanan/masuk/{id}', 'PesananController@detailshow')->name('pesan.detailshow');
         Route::post('/admin/pesanan/selesai/{id}', 'PesananController@pesananselesai')->name('pesan.pesananselesai');
         Route::get('/admin/pesanan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
+        Route::get('/admin/laporan', 'LaporanController@show')->name('laporan.show');
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
