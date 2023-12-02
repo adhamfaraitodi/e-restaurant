@@ -1,5 +1,5 @@
 <?php
-
+//pelanggan
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
@@ -79,7 +79,7 @@ class PesanController extends Controller
         $cart = $request->session()->get('cart', []);
         $nameCus = $request->session()->get('nameCus');
         $totalPrice = 0;
-        
+
         // Create new order
         $Order = new Order();
 
@@ -99,7 +99,7 @@ class PesanController extends Controller
 
 
         // Make a array of MenuOrder eloquent object
-        
+
         $menuOrders = [];
 
     foreach ($cart as $item) {
@@ -129,7 +129,7 @@ class PesanController extends Controller
     foreach ($menuOrders as $menuOrder) {
         $menuOrder->save();
     }
-    
+
     dd($Order); // <- Dump data sementara, hapus jika tidak perlu lagi
     // Redirect disini
     }
@@ -138,15 +138,15 @@ class PesanController extends Controller
     {
         $request->session()->put('nameCus',$request->input('namaCus'));
         $request->session()->put('idMeja',$request->input('id'));
-        
-        // Assign customer data 
+
+        // Assign customer data
         $Customer = new Customer();
         $Customer->name = $request->input('namaCus');
-        
+
         $Customer->save();
-        
+
         $request->session()->put('idCus',$Customer->id);
-        
+
         return redirect()->route('pesan.menu', $request->input('id'));
     }
 }

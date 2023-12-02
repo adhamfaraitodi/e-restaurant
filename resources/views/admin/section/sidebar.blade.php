@@ -16,8 +16,8 @@
             </li>
             <li><a><i class="fa fa-shopping-bag"></i> Pesanan <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="pesananmasuk">Pesanan Masuk</a></li>
-                    <li><a href="pesananselesai">Pesanan Selesai</a></li>
+                    <li><a href="{{route('pesan.show')}}">Pesanan Masuk</a></li>
+                    <li><a href="{{route('pesanselesai.show')}}">Pesanan Selesai</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-file-text"></i> Laporan <span class="fa fa-chevron-down"></span></a>
