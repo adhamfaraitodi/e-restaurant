@@ -38,7 +38,7 @@ class PesanController extends Controller
 
 
         // Deprecated, uncomment if you still want to use this
-        
+
         // // Calculate total by summing up all subtotals in the cart
         // $total = array_sum(array_column($cart, 'subtotal'));
 
@@ -98,7 +98,7 @@ class PesanController extends Controller
 
         $Order->id_customer = $request->session()->get('idCus');
         $Order->date = now();
-        $Order->order_status = 'unpaid';
+        $Order->order_status = 'active';
 
 
         // Make a array of MenuOrder eloquent object
@@ -121,7 +121,7 @@ class PesanController extends Controller
 
 
     // Clear the cart after successfully checking out
-    $request->session()->forget('cart');
+//    $request->session()->forget('cart');
 
     // Save order
     $Order->total_price = $totalPrice;
@@ -132,9 +132,29 @@ class PesanController extends Controller
     foreach ($menuOrders as $menuOrder) {
         $menuOrder->save();
     }
+    $data =Order::latest()->first();
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
 
-    dd($Order); // <- Dump data sementara, hapus jika tidak perlu lagi
-    // Redirect disini
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $data->id,
+                'gross_amount' => $data->total_price,
+            ),
+            'customer_details' => array(
+                'name' => $nameCus,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return view('customer\checkout',compact('snapToken','data'));
+//        dd($data);
     }
 
     public function setupSession(Request $request)

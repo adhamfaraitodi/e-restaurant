@@ -18,7 +18,7 @@
                             <p class="text-muted font-13 m-b-30">
 
                             </p>
-                            <table id="ManageMenuTable" class="table table-striped table-bordered" style="width:100%">
+                            <table id="ManageKaryawanTable" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -42,8 +42,8 @@
                                         <td>
 {{--                                            david--}}
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('menu.edit', $data->id) }}" class="btn"><i class="fa fa-edit text-info" style="font-size: 24px"></i></a>
-                                                <button id="btnMenuDelete{{ $data->id }}" class="btn" onclick="destroyMenu({{ $data->id }})"><i class="fa fa-trash text-danger" style="font-size: 24px"></i></button>
+                                                <a href="{{ route('karyawan.edit', $data->id) }}" class="btn"><i class="fa fa-edit text-info" style="font-size: 24px"></i></a>
+                                                <button id="btnMenuDelete{{ $data->id }}" class="btn" onclick="destroyKaryawanData({{ $data->id }})"><i class="fa fa-trash text-danger" style="font-size: 24px"></i></button>
                                             </div>
                                         </td>
                                     </tr>

@@ -58,7 +58,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/admin/pesanan/selesai/{id}', 'PesananController@pesananselesai')->name('pesan.pesananselesai');
         Route::get('/admin/pesanan/selesai', 'PesananController@selesaishow')->name('pesanselesai.show');
         Route::get('/admin/laporan', 'LaporanController@show')->name('laporan.show');
+
         Route::get('/admin/karyawan','KaryawanController@show')->name('karyawan.show');
+        Route::post('/admin/karyawan/{id}/delete','KaryawanController@delKaryawan')->name('karyawan.delete');
+        Route::post('/admin/karyawan/{id}/update','KaryawanController@UpdateKaryawan')->name('karyawan.update');
+
+        Route::get('/admin/karyawan/{id}/edit','KaryawanController@editKaryawan')->name('karyawan.edit');
+
+
         Route::get('/admin/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
