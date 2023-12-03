@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('total_price', 8, 2);
             $table->string('payment_status');
             $table->tinyInteger('table_number');
+            $table->string('snap_token', 36)->nullable();
             $table->timestamps();
         });
     }
