@@ -20,6 +20,9 @@
                         <div class="mb-3">
                             <label for="namaCus" class="form-label">Nama Pemesan</label>
                             <input type="text"class="form-control"id="namaCus" name="namaCus"/>
+                            @if ($errors->has('namaCus'))
+                                <span class="text-danger text-left">{{ $errors->first('namaCus') }}</span>
+                            @endif
                             <div id="namaCusHelp" class="form-text">
                                 We'll never share your name with anyone else.
                             </div>

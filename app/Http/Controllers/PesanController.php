@@ -159,12 +159,19 @@ class PesanController extends Controller
 
     public function setupSession(Request $request)
     {
-        $request->session()->put('nameCus',$request->input('namaCus'));
+        $data = $request->validate([
+            'namaCus' => 'required'
+        ],
+        [ // Error message
+            'namaCus.required' => 'Tolong masukan nama anda!',
+        ]
+        );
+        $request->session()->put('nameCus',$data['namaCus']);
         $request->session()->put('idMeja',$request->input('id'));
 
         // Assign customer data
         $Customer = new Customer();
-        $Customer->name = $request->input('namaCus');
+        $Customer->name = $data['namaCus'];
 
         $Customer->save();
 
