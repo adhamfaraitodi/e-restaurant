@@ -22,16 +22,16 @@
         <div class="col-md-3 left_col menu_fixed">
             <div class="left_col scroll-view">
                 <div class="clearfix"></div>
-                @include('admin.section.profil')
+                @include('auth.section.profil')
                 <br />
                 @include('admin.section.sidebar')
             </div>
         </div>
-                @include('admin.section.header')
+                @include('auth.section.header')
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
-                    @yield('content')
+                    @yield('content_register')
             </div>
         </div>
         <footer>
@@ -43,7 +43,7 @@
         <!-- /page content -->
     </div>
 </div>
-@include('admin.section.footer')
+@include('auth.section.footer')
 </body>
 
 </html>

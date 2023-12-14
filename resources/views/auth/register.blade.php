@@ -1,6 +1,6 @@
-@extends('admin.layouts.admin')
+@extends('auth.layouts.auth')
 @section('tittle','admin')
-@section('content')
+@section('content_register')
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
