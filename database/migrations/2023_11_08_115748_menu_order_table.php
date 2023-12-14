@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('menu_order', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->unsignedSmallInteger('id_menu');
-            $table->foreign('id_menu')->references('id')->on('menus');
+            $table->unsignedSmallInteger('id_menu')->nullable();
+            $table->foreign('id_menu')->references('id')->on('menus')->onDelete('set null');
             $table->unsignedSmallInteger('id_order');
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
             $table->smallInteger('quantity');
