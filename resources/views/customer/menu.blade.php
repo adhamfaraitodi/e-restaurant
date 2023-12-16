@@ -1,4 +1,13 @@
 @extends('customer.layouts.customer')
+@section('cart')
+    <ul class="d-flex justify-content-end list-unstyled">
+        <a href="{{ route('pesan.cartshow', ['meja' => session('idMeja')]) }}">
+            <svg class="cart" width="10em" height="10em">
+                <use xlink:href="#cart-outline"></use>
+            </svg>
+        </a>
+    </ul>
+@endsection
 @section('title_cus','meja')
 @section('content_cus')
 
@@ -29,13 +38,13 @@
                                 <a >{{ $menu->name }}</a>
                             </h3>
                             <div class="card-meta text-muted">
-                                <span class="meta-  ">Harga : {{ $menu->price_food }}&nbsp;&nbsp;&nbsp;&nbsp;Stok : {{ $menu->number_available }}</span>
+                                <span class="meta-  ">Harga : {{ round($menu->price_food) }}&nbsp;&nbsp;&nbsp;&nbsp;Stok : {{ $menu->number_available }}</span>
                             </div>
                             <div class="card-meta text-muted">
                                 <span class="meta-category">{{ $menu->desc }}</span>
                             </div>
                             <br>
-                            <a href=""><svg class="star star-empty" width="2em" height="2em"><use xlink:href="#star-empty"></use></svg></a>
+{{--                            <a href=""><svg class="star star-empty" width="2em" height="2em"><use xlink:href="#star-empty"></use></svg></a>--}}
                             <span style="margin-right: 10px;"></span>
                             <a href="{{ route('pesan.add',['meja' => session('idMeja'),'id' => $menu->id])}}"><svg class="cart-outline" width="2em" height="2em"><use xlink:href="#cart-outline"></use></svg></a>
                         </div>

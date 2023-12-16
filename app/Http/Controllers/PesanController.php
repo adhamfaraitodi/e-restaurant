@@ -98,7 +98,7 @@ class PesanController extends Controller
 
         $Order->id_customer = $request->session()->get('idCus');
         $Order->date = now();
-        $Order->order_status = 'active';
+        $Order->order_status = '1';
 
 
         // Make a array of MenuOrder eloquent object
