@@ -160,12 +160,14 @@ class PesanController extends Controller
     public function setupSession(Request $request)
     {
         $data = $request->validate([
-            'namaCus' => 'required'
-        ],
-        [ // Error message
+            'namaCus' => 'required|string|min:3|max:15|regex:/^[a-zA-Z]+$/',
+        ], [
             'namaCus.required' => 'Tolong masukan nama anda!',
-        ]
-        );
+            'namaCus.string' => 'Nama harus berupa string.',
+            'namaCus.min' => 'Nama harus memiliki setidaknya 3 karakter.',
+            'namaCus.max' => 'Nama tidak boleh melebihi 15 karakter.',
+            'namaCus.regex' => 'Nama hanya boleh berisi huruf tanpa karakter khusus.'
+        ]);
         $request->session()->put('nameCus',$data['namaCus']);
         $request->session()->put('idMeja',$request->input('id'));
 
