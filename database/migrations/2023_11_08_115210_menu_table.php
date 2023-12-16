@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('desc');
             $table->string('image_path');
+            $table->boolean('status');
             $table->smallInteger('number_available');
             $table->smallInteger('number_sale');
             $table->smallInteger('favorite');

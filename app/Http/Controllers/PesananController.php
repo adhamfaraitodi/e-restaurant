@@ -14,7 +14,7 @@ class PesananController extends Controller
         $orders =DB::table('orders')
             ->join('customers', 'orders.id_customer', '=', 'customers.id')
             ->select('orders.table_number','orders.id','orders.order_status','orders.payment_status','orders.total_price', 'customers.name')
-            ->where('order_status','active')
+            ->where('order_status','1')
             ->get();
         return view('admin.pesanmasuk', compact('orders'));
     }
@@ -29,14 +29,13 @@ class PesananController extends Controller
     public function pesananselesai($id){
         DB::table('orders')
             ->where('id', $id)
-            ->update(['order_status' => 'deactive']);
+            ->update(['order_status' => '0']);
         return redirect()->route('pesan.show');
     }
     public function selesaishow(){
-        $orders =DB::table('orders')
-            ->join('customers', 'orders.id_customer', '=', 'customers.id')
+        $orders = Order::join('customers', 'orders.id_customer', '=', 'customers.id')
             ->select('orders.table_number','orders.id','orders.order_status','orders.payment_status','orders.total_price', 'customers.name')
-            ->where('order_status','deactive')
+            ->where('order_status','0')
             ->get();
         return view('admin.pesanselesai', compact('orders'));
     }

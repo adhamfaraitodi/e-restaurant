@@ -93,7 +93,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Update user</button>
-                <a href="{{ route('karyawan.show') }}" class="btn btn-default">Cancel</button>
+                <a href="{{ route('karyawan.show') }}" class="btn btn-default">Cancel</a>
             </form>
         </div>
 

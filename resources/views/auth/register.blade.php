@@ -1,7 +1,6 @@
 @extends('auth.layouts.auth')
 @section('tittle','admin')
 @section('content_register')
-<div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
 
@@ -110,5 +109,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
