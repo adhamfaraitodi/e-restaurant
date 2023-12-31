@@ -42,13 +42,13 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foodName' => 'required|string|max:255',
-            'foodDesc' => 'required|string|max:255',
+            'foodName' => 'required|string|min:1|max:255',
+            'foodDesc' => 'required|string|min:1|max:255',
             'foodImg' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'foodStock' => 'required|integer',
-            'foodPrice' => 'required|numeric',
+            'foodStock' => 'required|integer|min:0',
+            'foodPrice' => 'required|numeric|min:0',
             'jenis' => 'required|string',
-            'foodDisc' => 'required|numeric',
+            'foodDisc' => 'required|numeric|min:0',
         ]);
 
         $menu = new Menu();
@@ -71,6 +71,7 @@ class MenuController extends Controller
         $menu->desc = $request->foodDesc;
         $menu->image_path = $path;
         $menu->number_sale = 0;
+        $menu->status=1;
         $menu->favorite = 0;
         $menu->number_available = $request->foodStock;
         $menu->food_type = $request->jenis;
@@ -84,12 +85,12 @@ class MenuController extends Controller
     public function update( Request $request)
     {
         $data=$request->validate([
-            'foodName' => 'required|string|max:255',
-            'foodDesc' => 'required|string|max:255',
-            'foodStock' => 'required|integer',
-            'foodPrice' => 'required|integer',
+            'foodName' => 'required|string|min:1|max:255',
+            'foodDesc' => 'required|string|min:1|max:255',
+            'foodStock' => 'required|integer|min:0',
+            'foodPrice' => 'required|numeric|min:0',
             'jenis' => 'required|string',
-            'foodDisc' => 'required|integer',
+            'foodDisc' => 'required|numeric|min:0',
         ]);
 
         $menu = Menu::findOrFail($request->route()->parameter('menu'));

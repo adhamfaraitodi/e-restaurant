@@ -31,24 +31,8 @@ class PesanController extends Controller
             'subtotal'=>0,
             "total" => 0
         ];
-        // Calculate subtotal and total for the item
         $cart[$id]['subtotal'] = ($cart[$id]['price'] - $cart[$id]['discount']) * $cart[$id]['quantity'];
-        // Update the cart in the session
         session(['cart' => $cart]);
-
-
-        // Deprecated, uncomment if you still want to use this
-
-        // // Calculate total by summing up all subtotals in the cart
-        // $total = array_sum(array_column($cart, 'subtotal'));
-
-        // // Update total for each item in the cart
-        // foreach ($cart as &$item) {
-        //     $item['total'] = $total;
-        // }
-
-        // // Update the cart in the session with the recalculated totals
-        // session(['cart' => $cart]);
         return redirect()->back();
     }
     public function cartdelete($mejaID, $id, Request $request)
@@ -57,10 +41,7 @@ class PesanController extends Controller
             $cart = session()->get('cart', []);
 
             if (isset($cart[$request->id])) {
-                // Remove the item with the specified ID from the cart
                 unset($cart[$request->id]);
-
-                // Update the session cart with the modified array
                 session(['cart' => $cart]);
             }
         }
@@ -83,10 +64,7 @@ class PesanController extends Controller
         $nameCus = $request->session()->get('nameCus');
         $totalPrice = 0;
 
-        // Create new order
         $Order = new Order();
-
-        // Override auto increment order
         if (Order::all()->isEmpty())
         {
             $Order->id = 1;
@@ -100,15 +78,12 @@ class PesanController extends Controller
         $Order->date = now();
         $Order->order_status = '1';
 
-
-        // Make a array of MenuOrder eloquent object
-
         $menuOrders = [];
 
     foreach ($cart as $item) {
         $menuOrder = new MenuOrder();
         $menuOrder->id_menu = $item['menuId'];
-        $menuOrder->id_order = $Order->id; // Assuming you have the order ID
+        $menuOrder->id_order = $Order->id; 
         $menuOrder->quantity = $item['quantity'];
         $menuOrder->price_food = $item['price'];
         $menuOrder->discount = $item['discount'];
@@ -119,16 +94,10 @@ class PesanController extends Controller
         $totalPrice += $item['subtotal'];
     }
 
-
-    // Clear the cart after successfully checking out
-//    $request->session()->forget('cart');
-
-    // Save order
     $Order->total_price = $totalPrice;
     $Order->table_number = $mejaID;
     $Order->save();
 
-    // Save each MenuOrder
     foreach ($menuOrders as $menuOrder) {
         $menuOrder->save();
     }
@@ -153,8 +122,8 @@ class PesanController extends Controller
         );
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $request->session()->forget('cart');
         return view('customer\checkout',compact('snapToken','data'));
-//        dd($data);
     }
 
     public function setupSession(Request $request)

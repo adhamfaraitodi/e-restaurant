@@ -59,11 +59,6 @@
                                 }
                             @endphp
                             <td colspan="4" class="text-right">{{ $totalPrice }}</td>
-                            {{-- DEPRECATED --}}
-                            {{-- @foreach(session('cart') as $id => $details)
-                                <td colspan="4" class="text-right">{{ $details['total'] }}</td>
-                                @break
-                            @endforeach --}}
                             @endif
                         </tr>
                         <tr>
