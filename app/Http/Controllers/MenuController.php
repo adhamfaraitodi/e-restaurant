@@ -6,42 +6,34 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateMenuRequest;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
     public function show(){
-        $menus = Menu::all();
+        $menus = Menu::where('status', 1)->get();
+        $men = Menu::where('status', 0)->get();
 
-        return view('admin.menu', compact('menus'));
+        return view('admin.menu', compact('menus','men'));
     }
-    /**
-     * Edit user data
-     *
-     * @param Menu $menu
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Menu $menu)
+    public function edit($menuId)
     {
-        return view('admin.editmenu', [
-            'menu' => $menu
-        ]);
+        $data = Menu::findOrFail($menuId);
+        return view('admin.editmenu', compact('data'));
     }
-    /**
-     * Delete user data
-     *
-     * @param Menu $menu
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($menuId)
     {
-        $menu = Menu::findOrFail($menuId);
-        $menu->delete();
-
-        return response()->json(array('success' => 'Menu deleted successfully.'),200);
-        // return redirect()->route('menu.show')
-        //     ->withSuccess(__('menu deleted successfully.'));
+        DB::table('menus')
+            ->where('id', $menuId)
+            ->update(['status' => '0']);
+        return redirect()->route('menu.show');
+    }
+    public function restore($menuId)
+    {
+        DB::table('menus')
+            ->where('id', $menuId)
+            ->update(['status' => '1']);
+        return redirect()->route('menu.show');
     }
     public function create()
     {
@@ -50,18 +42,17 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foodName' => 'required|string|max:255',
-            'foodDesc' => 'required|string|max:255',
+            'foodName' => 'required|string|min:1|max:255',
+            'foodDesc' => 'required|string|min:1|max:255',
             'foodImg' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'foodStock' => 'required|integer',
-            'foodPrice' => 'required|numeric',
+            'foodStock' => 'required|integer|min:0',
+            'foodPrice' => 'required|numeric|min:0',
             'jenis' => 'required|string',
-            'foodDisc' => 'required|numeric',
+            'foodDisc' => 'required|numeric|min:0',
         ]);
 
         $menu = new Menu();
 
-        // Meng-override auto-increment dari database jadi disini dulu.
         if (Menu::all()->isEmpty())
         {
             $menu->id = 1;
@@ -75,11 +66,12 @@ class MenuController extends Controller
         $menuId = $menu->id;
         $path = $request->foodImg->store('img/menu/'.$menuId, 'public');
 
-        $menu->id_admin = Auth::user()->id; // Nanti ambil id nya dari auth session,sementara 1 dulu
+        $menu->id_admin = Auth::user()->id;
         $menu->name = $request->foodName;
         $menu->desc = $request->foodDesc;
         $menu->image_path = $path;
         $menu->number_sale = 0;
+        $menu->status=1;
         $menu->favorite = 0;
         $menu->number_available = $request->foodStock;
         $menu->food_type = $request->jenis;
@@ -90,19 +82,25 @@ class MenuController extends Controller
         return redirect()->route('menu.create');
 
     }
-    /**
-     * Update user data
-     *
-     * @param Menu $menu
-     * @param UpdateUserRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Menu $menu, UpdateMenuRequest $request)
+    public function update( Request $request)
     {
-        $menu->update($request->validated());
+        $data=$request->validate([
+            'foodName' => 'required|string|min:1|max:255',
+            'foodDesc' => 'required|string|min:1|max:255',
+            'foodStock' => 'required|integer|min:0',
+            'foodPrice' => 'required|numeric|min:0',
+            'jenis' => 'required|string',
+            'foodDisc' => 'required|numeric|min:0',
+        ]);
 
-        return redirect()->route('menu.show')
-            ->withSuccess(__('menu updated successfully.'));
+        $menu = Menu::findOrFail($request->route()->parameter('menu'));
+        $menu->name = $data['foodName'];
+        $menu->desc = $data['foodDesc'];
+        $menu->number_available = $data['foodStock'];
+        $menu->price_food = $data['foodPrice'];
+        $menu->food_type = $data['jenis'];
+        $menu->discount = $data['foodDisc'];
+        $menu->save();
+        return redirect()->route('menu.show');
     }
 }

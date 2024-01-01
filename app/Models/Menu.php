@@ -20,7 +20,8 @@ class Menu extends Model
         'favorite',
         'food_type',
         'price_food',
-        'discount'
+        'discount'.
+        'status'
     ];
 
     public function Admin()

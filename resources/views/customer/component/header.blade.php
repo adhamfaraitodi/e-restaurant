@@ -20,15 +20,7 @@
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                         <li class="nav-item">
                             <div class="user-items ps-5">
-                                @if(session()->has('nameCus'))
-                                    <ul class="d-flex justify-content-end list-unstyled">
-                                        <a href="{{ route('pesan.cartshow', ['meja' => session('idMeja')]) }}">
-                                            <svg class="cart" width="10em" height="10em">
-                                                <use xlink:href="#cart-outline"></use>
-                                            </svg>
-                                        </a>
-                                    </ul>
-                                @endif
+                                @yield('cart')
                             </div>
                         </li>
                     </ul>

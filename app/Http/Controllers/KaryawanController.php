@@ -12,7 +12,7 @@ class KaryawanController extends Controller
         $karyawan = Admin::where('job','karyawan')->get();
         return view('admin.karyawan', compact('karyawan'));
     }
-    
+
     public function UpdateKaryawan(Request $request)
     {
         $data = $request->validate([

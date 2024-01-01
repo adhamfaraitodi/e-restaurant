@@ -37,7 +37,13 @@
                                     <tr>
                                         <td>{{ $order->name }}</td>
                                         <td>{{ $order->table_number }}</td>
-                                        <td>{{ $order->order_status }}</td>
+                                        <td>
+                                            @if($order->order_status== 0)
+                                                Inactive
+                                            @elseif($order->order_status == 1)
+                                                Active
+                                            @endif
+                                        </td>
                                         <td>{{ $order->payment_status }}</td>
                                         <td>{{ $order->total_price }}</td>
                                         <td>

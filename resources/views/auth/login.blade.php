@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('body_class','login')
+@extends('auth.layouts.login')
+@section('tittle','login')
 @section('content_login')
     <div>
         <a class="hiddenanchor" id="signup"></a>
